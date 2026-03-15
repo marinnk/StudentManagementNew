@@ -1,0 +1,13 @@
+package reisetech.studentManagementNew;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class StudentManagementNewApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
