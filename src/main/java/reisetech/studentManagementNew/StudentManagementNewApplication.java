@@ -1,5 +1,8 @@
 package reisetech.studentManagementNew;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,6 +17,7 @@ public class StudentManagementNewApplication {
 	private String name = "Enami Koji";
 	public String age = "32";
 
+	private List<Map<String, String>> students = new ArrayList<>();
 
 	public static void main(String[] args) {
 		SpringApplication.run(StudentManagementNewApplication.class, args);
@@ -21,13 +25,17 @@ public class StudentManagementNewApplication {
 
 	@GetMapping("/studentInfo")
 	public String getstudentInfo() {
-		return name + " " + age + "歳";
+		return students.toString();
 	}
 
 	@PostMapping("/studentInfo")
 	public void setstudentInfo(String name, String age) {
-		this.name = name;
-		this.age = age;
+		Map<String, String> student = new HashMap<>();
+		student.put("name", name);
+		student.put("age", age);
+
+		students.add(student);
+
 	}
 
 	@PostMapping("/studentName")
