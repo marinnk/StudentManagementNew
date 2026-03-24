@@ -1,6 +1,5 @@
 package reisetech.studentManagementNew;
 
-import org.apache.ibatis.annotations.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -36,7 +35,7 @@ public class StudentManagementNewApplication {
 
 	@PatchMapping("/student")
 	public void updateStudentName(String name,int age) {
-  	repository.registerStudent(name, age);
+  	repository.updateStudent(name, age);
 	}
 
 	@DeleteMapping("/student")
