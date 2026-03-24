@@ -1,5 +1,6 @@
 package reisetech.studentManagementNew;
 
+import java.util.List;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -9,8 +10,8 @@ import org.apache.ibatis.annotations.Update;
 @Mapper
 public interface StudentRepository {
 
-  @Select("SELECT * FROM student WHERE name = #{name}")
-  Student searchByName(String name);
+  @Select("SELECT * FROM student")
+  List<Student> getAllStudents();
 
   @Insert("INSERT student values(#{name}, #{age})")
   void registerStudent(String name, int age);
