@@ -24,8 +24,8 @@ public class StudentManagementNewApplication {
 	}
 
 	@GetMapping("/student")
-	public List<Student> getStudentList(@RequestParam String name) {
-		return repository.searchByName(name);
+	public List<Student> getStudentList() {
+		return repository.searchByName();
 
 	}
 
