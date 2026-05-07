@@ -10,6 +10,7 @@ import reisetech.studentManagementNew.repository.StudentRepository;
 import reisetech.studentManagementNew.data.Student;
 import reisetech.studentManagementNew.data.StudentCourse;
 
+
 @SpringBootApplication
 @RestController
 public class StudentManagementNewApplication {
@@ -22,14 +23,6 @@ public class StudentManagementNewApplication {
 		SpringApplication.run(StudentManagementNewApplication.class, args);
 	}
 
-	@GetMapping("/student")
-	public List<Student> getStudentList() {
-		return repository.searchByName();
-	}
 
-	@GetMapping("/studentCourse")
-	public List<StudentCourse> getStudentCourseList() {
-		return repository.searchCourse();
-	}
 
 }

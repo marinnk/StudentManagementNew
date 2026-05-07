@@ -10,8 +10,8 @@ import reisetech.studentManagementNew.data.StudentCourse;
 public interface StudentRepository {
 
   @Select("SELECT * FROM students")
-  List<Student> searchByName();
+  List<Student> search();
 
   @Select("SELECT * FROM students_courses")
-  List<StudentCourse> searchCourse();
+  List<StudentCourse> searchStudentCourse();
 }
