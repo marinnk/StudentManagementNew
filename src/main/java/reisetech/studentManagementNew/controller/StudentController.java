@@ -19,12 +19,12 @@ public class StudentController {
   }
 
 
-  @GetMapping("/studentList")
+  @GetMapping("/student")
   public List<Student> getStudentList() {
     return service.searchStudentList();
   }
 
-  @GetMapping("/studentCourseList")
+  @GetMapping("/studentCourse")
   public List<StudentCourse> getStudentCourseList() {
     return service.searchStudentCourseList();
   }
