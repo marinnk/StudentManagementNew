@@ -32,8 +32,15 @@ public class StudentService {
   }
 
   public List<StudentCourse> searchStudentCourseList() {
+    List<StudentCourse> allStudentCourses = repository.searchStudentCourse();
+    List<StudentCourse> filteredStudentCourses = new ArrayList<>();
     //絞り込み検索で「Javaコース」のコース情報のみ抽出する
     //抽出したリストをコントローラーに返す
-    return repository.searchStudentCourse();
+    for(StudentCourse studentCourse : allStudentCourses) {
+      if("java".equals(studentCourse.getCourseName())) {
+        filteredStudentCourses.add(studentCourse);
+      }
+    }
+    return filteredStudentCourses;
   }
 }
