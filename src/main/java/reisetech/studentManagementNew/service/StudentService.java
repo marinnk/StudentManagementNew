@@ -4,7 +4,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reisetech.studentManagementNew.data.Student;
-import reisetech.studentManagementNew.data.StudentCourse;
+import reisetech.studentManagementNew.data.StudentCourses;
 import reisetech.studentManagementNew.repository.StudentRepository;
 
 @Service
@@ -21,7 +21,7 @@ public class StudentService {
     return repository.search();
   }
 
-  public List<StudentCourse> searchStudentCourseList() {
+  public List<StudentCourses> searchStudentCourseList() {
     return repository.searchStudentCourse();
   }
 }
