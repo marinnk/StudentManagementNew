@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reisetech.studentManagementNew.data.Student;
-import reisetech.studentManagementNew.data.StudentCourse;
+import reisetech.studentManagementNew.data.StudentCourses;
 import reisetech.studentManagementNew.service.StudentService;
 
 @RestController
@@ -25,7 +25,7 @@ public class StudentController {
   }
 
   @GetMapping("/studentCourseList")
-  public List<StudentCourse> getStudentCourseList() {
+  public List<StudentCourses> getStudentCourseList() {
     return service.searchStudentCourseList();
   }
 
