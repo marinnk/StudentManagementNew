@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import reisetech.studentManagementNew.controller.converter.StudentConverter;
 import reisetech.studentManagementNew.data.Student;
 import reisetech.studentManagementNew.data.StudentCourses;
 import reisetech.studentManagementNew.domain.StudentDetail;
@@ -14,12 +15,12 @@ import reisetech.studentManagementNew.service.StudentService;
 public class StudentController {
 
   private StudentService service;
-  private List<Student> students;
-  private List<StudentCourses> studentCourses;
+  private StudentConverter converter;
 
   @Autowired
-  public StudentController(StudentService service) {
+  public StudentController(StudentService service, StudentConverter converter) {
     this.service = service;
+    this.converter = converter;
   }
 
 
@@ -28,21 +29,7 @@ public class StudentController {
     List<Student> students = service.searchStudentList();
     List<StudentCourses> studentCourses = service.searchStudentCourseList();
 
-    List<StudentDetail> studentDetails = new ArrayList<>();
-    for(Student student :students) {
-      StudentDetail studentDetail = new StudentDetail();
-      studentDetail.setStudent(student);
-
-      List<StudentCourses> convertStudentCourse = new ArrayList<>();
-      for (StudentCourses studentCourse : studentCourses) {
-        if(student.getId().equals(studentCourse.getStudentId())) {
-          convertStudentCourse.add(studentCourse);
-        }
-      }
-    studentDetail.setStudentCourses(convertStudentCourse);
-    studentDetails.add(studentDetail);
-    }
-    return studentDetails;
+    return converter.convertStudentDetails(students, studentCourses);
   }
 
   @GetMapping("/studentCourseList")
