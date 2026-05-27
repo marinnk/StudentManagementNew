@@ -1,6 +1,5 @@
 package reisetech.studentManagementNew.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,28 +18,10 @@ public class StudentService {
   }
 
   public List<Student> searchStudentList() {
-    //検索処理
-    List<Student> allStudents = repository.search();
-    List<Student> filteredStudents = new ArrayList<>();
-    //絞り込みをする。年齢が30代の人のみを抽出
-    //抽出したリストトをコントローラーに返す
-    for (Student student : allStudents){
-      if(student.getAge()>=30 && 39 >= student.getAge()){
-        filteredStudents.add(student);
-      } }
-    return filteredStudents;
+    return repository.search();
   }
 
   public List<StudentCourse> searchStudentCourseList() {
-    List<StudentCourse> allStudentCourses = repository.searchStudentCourse();
-    List<StudentCourse> filteredStudentCourses = new ArrayList<>();
-    //絞り込み検索で「Javaコース」のコース情報のみ抽出する
-    //抽出したリストをコントローラーに返す
-    for(StudentCourse studentCourse : allStudentCourses) {
-      if("java".equals(studentCourse.getCourseName())) {
-        filteredStudentCourses.add(studentCourse);
-      }
-    }
-    return filteredStudentCourses;
+    return repository.searchStudentCourse();
   }
 }
