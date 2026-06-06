@@ -4,9 +4,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import reisetech.studentManagementNew.controller.converter.StudentConverter;
 import reisetech.studentManagementNew.data.Student;
 import reisetech.studentManagementNew.data.StudentCourses;
+import reisetech.studentManagementNew.domain.StudentDetail;
 import reisetech.studentManagementNew.service.StudentService;
 import org.springframework.ui.Model;
 
@@ -35,6 +38,11 @@ public class StudentController {
   @GetMapping("/studentCourseList")
   public List<StudentCourses> getStudentCourseList() {
     return service.searchStudentCourseList();
+  }
+
+  @PostMapping("/registerStudent")
+  public String registerStudent(@ModelAttribute StudentDetail studentDetail) {
+
   }
 
 }
