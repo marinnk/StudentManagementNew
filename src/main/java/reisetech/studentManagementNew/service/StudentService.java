@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import reisetech.studentManagementNew.data.Student;
 import reisetech.studentManagementNew.data.StudentCourses;
 import reisetech.studentManagementNew.data.StudentCourses;
+import reisetech.studentManagementNew.domain.StudentDetail;
 import reisetech.studentManagementNew.repository.StudentRepository;
 
 @Service
@@ -25,4 +26,8 @@ public class StudentService {
   public List<StudentCourses> searchStudentCourseList() {
     return repository.searchStudentCourse();
   }
+  public void registerStudent(StudentDetail studentDetail) {
+    repository.registerStudent(studentDetail);
+  }
+
 }
