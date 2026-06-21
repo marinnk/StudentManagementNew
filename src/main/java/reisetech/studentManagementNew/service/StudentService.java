@@ -28,6 +28,10 @@ public class StudentService {
   }
   public void registerStudent(StudentDetail studentDetail) {
     repository.registerStudent(studentDetail);
+    System.out.println("登録後ID: " + studentDetail.getStudent().getId());
+  }
+  public void registerStudentCourse(StudentDetail studentDetail) {
+    repository.registerStudentCourse(studentDetail);
   }
 
 }

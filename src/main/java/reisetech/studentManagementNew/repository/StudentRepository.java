@@ -3,6 +3,7 @@ package reisetech.studentManagementNew.repository;
 import java.util.List;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
 import reisetech.studentManagementNew.data.Student;
 import reisetech.studentManagementNew.data.StudentCourses;
@@ -18,5 +19,9 @@ public interface StudentRepository {
   List<StudentCourses> searchStudentCourse();
 
   @Insert("INSERT INTO students (name) VALUES (#{student.name})")
+  @Options(useGeneratedKeys = true, keyProperty = "student.id", keyColumn = "id")
   void registerStudent(StudentDetail studentDetail);
+
+  @Insert("INSERT INTO students_courses (student_id,course_name) VALUES (#{studentCourses[0].studentId},#{studentCourses[0].courseName})")
+  void registerStudentCourse(StudentDetail studentDetail);
 }
