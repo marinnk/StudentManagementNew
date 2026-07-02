@@ -3,6 +3,7 @@ package reisetech.studentManagementNew.service;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import reisetech.studentManagementNew.data.Student;
 import reisetech.studentManagementNew.data.StudentCourses;
 import reisetech.studentManagementNew.data.StudentCourses;
@@ -26,11 +27,9 @@ public class StudentService {
   public List<StudentCourses> searchStudentCourseList() {
     return repository.searchStudentCourse();
   }
+  @Transactional
   public void registerStudent(StudentDetail studentDetail) {
     repository.registerStudent(studentDetail);
-    System.out.println("登録後ID: " + studentDetail.getStudent().getId());
-  }
-  public void registerStudentCourse(StudentDetail studentDetail) {
     repository.registerStudentCourse(studentDetail);
   }
 
