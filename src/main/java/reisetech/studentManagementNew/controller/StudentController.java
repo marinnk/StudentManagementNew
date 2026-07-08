@@ -7,23 +7,28 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import reisetech.studentManagementNew.controller.converter.StudentConverter;
 import reisetech.studentManagementNew.data.Student;
 import reisetech.studentManagementNew.data.StudentCourses;
 import reisetech.studentManagementNew.domain.StudentDetail;
+import reisetech.studentManagementNew.repository.StudentRepository;
 import reisetech.studentManagementNew.service.StudentService;
 import org.springframework.ui.Model;
 
 @Controller
 public class StudentController {
 
+  private final StudentRepository studentRepository;
   private StudentService service;
   private StudentConverter converter;
 
   @Autowired
-  public StudentController(StudentService service, StudentConverter converter) {
+  public StudentController(StudentService service, StudentConverter converter,
+      StudentRepository studentRepository) {
     this.service = service;
     this.converter = converter;
+    this.studentRepository = studentRepository;
   }
 
 
@@ -36,6 +41,13 @@ public class StudentController {
     return "studentList";
   }
 
+  @GetMapping("/updateStudent")
+  public String updateStudent(@RequestParam Integer id, Model model) {
+    model.addAttribute("studentDetail", service.getStudentDetail(id));
+    return "updateStudent";
+  }
+
+
   @GetMapping("/studentCourseList")
   public List<StudentCourses> getStudentCourseList() {
     return service.searchStudentCourseList();
@@ -45,6 +57,12 @@ public class StudentController {
   public String newStudent(Model model) {
     model.addAttribute("studentDetail", new StudentDetail());
     return "registerStudent";
+  }
+
+  @PostMapping("/updateStudent")
+  public String updateStudent(@ModelAttribute StudentDetail studentDetail) {
+    service.updateStudent(studentDetail);
+    return "redirect:/studentList";
   }
 
   @PostMapping("/registerStudent")

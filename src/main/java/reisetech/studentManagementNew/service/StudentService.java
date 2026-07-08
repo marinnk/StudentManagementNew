@@ -27,6 +27,19 @@ public class StudentService {
   public List<StudentCourses> searchStudentCourseList() {
     return repository.searchStudentCourse();
   }
+
+
+  public StudentDetail getStudentDetail(Integer id) {
+    StudentDetail StudentDetail = new StudentDetail();
+    StudentDetail.setStudent(repository.searchStudentById(id));
+    StudentDetail.setStudentCourses(repository.searchStudentCourseById(id));
+    return StudentDetail;
+  }
+
+  public void updateStudent(StudentDetail studentDetail) {
+    repository.updateStudent(studentDetail);
+  }
+
   @Transactional
   public void registerStudent(StudentDetail studentDetail) {
     repository.registerStudent(studentDetail);
