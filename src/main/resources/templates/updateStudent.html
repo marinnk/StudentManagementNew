@@ -11,11 +11,11 @@
   </div>
   <div>
     <label for="name">名前：</label>
-    <input type="text" id="name" th:field="*{student.name}" required />
+    <input type="text" id="name" th:field="*{student.name}" />
   </div>
   <div>
     <label for="furigana">フリガナ：</label>
-    <input type="text" id="furigana" th:field="*{student.furigana}" required />
+    <input type="text" id="furigana" th:field="*{student.furigana}" />
   </div>
 
   <div>
@@ -25,7 +25,7 @@
 
   <div>
     <label for="mail">メールアドレス：</label>
-    <input type="email" id="mail" th:field="*{student.mail}" required />
+    <input type="email" id="mail" th:field="*{student.mail}" />
   </div>
 
   <div>
@@ -49,7 +49,7 @@
   </div>
   <div>
     <label for="courseName">コース名：</label>
-    <input type="text" id="courseName" th:field="*{studentCourses[0].courseName}" required />
+    <input type="text" id="courseName" th:field="*{studentCourses[0].courseName}" />
   </div>
   <div>
     <button type="submit">更新</button>
