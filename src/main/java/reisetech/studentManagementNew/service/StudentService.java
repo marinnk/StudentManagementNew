@@ -36,8 +36,12 @@ public class StudentService {
     return StudentDetail;
   }
 
+  @Transactional
   public void updateStudent(StudentDetail studentDetail) {
     repository.updateStudent(studentDetail);
+    for(StudentCourses studentCourses : studentDetail.getStudentCourses()) {
+      repository.updateStudentCourse(studentCourses);
+    }
   }
 
   @Transactional

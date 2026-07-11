@@ -48,6 +48,9 @@
     <textarea id="remark" th:field="*{student.remark}"></textarea>
   </div>
   <div>
+    <input type="hidden" th:field="*{studentCourses[0].id}" />
+  </div>
+  <div>
     <label for="courseName">コース名：</label>
     <input type="text" id="courseName" th:field="*{studentCourses[0].courseName}" />
   </div>

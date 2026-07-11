@@ -25,8 +25,11 @@ public interface StudentRepository {
   @Select("SELECT * FROM students_courses WHERE student_id = #{id}")
   List<StudentCourses> searchStudentCourseById(Integer id);
 
-  @Update("UPDATE students SET name = #{student.name}, furigana = #{student.furigana}, nickname = #{student.nickname}, mail = #{student.mail}, place = #{student.place}, age = #{student.age}, gender = #{student.gender}, remark = #{student.remark} WHERE id = #{student.id}")
+  @Update("UPDATE students SET name = #{student.name}, furigana = #{student.furigana}, nickname = #{student.nickname}, mail = #{student.mail}, place = #{student.place}, age = #{student.age}, gender = #{student.gender}, remark = #{student.remark}, is_deleted = #{student.isDeleted} WHERE id = #{student.id}")
   void updateStudent(StudentDetail studentDetail);
+
+  @Update("UPDATE students_courses SET course_name = #{courseName} WHERE id = #{id}")
+  void updateStudentCourse(StudentCourses studentCourses);
 
   @Insert("""
     INSERT INTO students
@@ -40,7 +43,7 @@ public interface StudentRepository {
      #{student.age},
      #{student.gender},
      #{student.remark},
-     #{student.isDeleted})
+     false)
     """)
   @Options(useGeneratedKeys = true, keyProperty = "student.id", keyColumn = "id")
   void registerStudent(StudentDetail studentDetail);
