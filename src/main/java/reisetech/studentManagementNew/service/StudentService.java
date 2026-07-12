@@ -37,14 +37,6 @@ public class StudentService {
   }
 
   @Transactional
-  public void updateStudent(StudentDetail studentDetail) {
-    repository.updateStudent(studentDetail);
-    for(StudentCourses studentCourses : studentDetail.getStudentCourses()) {
-      repository.updateStudentCourse(studentCourses);
-    }
-  }
-
-  @Transactional
   public void registerStudent(StudentDetail studentDetail) {
     repository.registerStudent(studentDetail);
     for(StudentCourses course : studentDetail.getStudentCourses()) {
@@ -52,6 +44,14 @@ public class StudentService {
       course.setStart(LocalDateTime.now());
 
       repository.registerStudentCourse(course);
+    }
+  }
+
+  @Transactional
+  public void updateStudent(StudentDetail studentDetail) {
+    repository.updateStudent(studentDetail);
+    for(StudentCourses studentCourses : studentDetail.getStudentCourses()) {
+      repository.updateStudentCourse(studentCourses);
     }
   }
 
