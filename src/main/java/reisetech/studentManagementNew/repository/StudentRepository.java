@@ -13,7 +13,7 @@ import reisetech.studentManagementNew.domain.StudentDetail;
 @Mapper
 public interface StudentRepository {
 
-  @Select("SELECT * FROM students")
+  @Select("SELECT * FROM students WHERE is_deleted = false")
   List<Student> search();
 
   @Select("SELECT * FROM students_courses")
@@ -30,6 +30,7 @@ public interface StudentRepository {
 
   @Update("UPDATE students_courses SET course_name = #{courseName} WHERE id = #{id}")
   void updateStudentCourse(StudentCourses studentCourses);
+
 
   @Insert("""
     INSERT INTO students
